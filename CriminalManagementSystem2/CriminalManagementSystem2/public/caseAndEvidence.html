@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case and Evidence</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:linear-gradient(1000deg,#4fbab0,#9550b5,#b64782);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            margin-left: 100px;
+            color: #fff;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .select-container {
+            margin-bottom: 20px;
+        }
+
+        .crime-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .crime-select option {
+            background-color: #fff;
+        }
+
+        .details {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Case and Evidence</h1>
+    <div class="container">
+        <div class="select-container">
+            <select id="caseCrimeTypeSelect" class="crime-select">
+                <option value="" selected disabled>Select Crime Type for Case</option>
+                <!-- Crime types options will be populated here -->
+            </select>
+            <div id="caseDetails" class="details"></div>
+        </div>
+        <div class="select-container">
+            <select id="evidenceCrimeTypeSelect" class="crime-select">
+                <option value="" selected disabled>Select Crime Type for Evidence</option>
+                <!-- Crime types options will be populated here -->
+            </select>
+            <div id="evidenceDetails" class="details"></div>
+        </div>
+    </div>
+
+    <script src="caseAndEvidence.js"></script>
+</body>
+</html>

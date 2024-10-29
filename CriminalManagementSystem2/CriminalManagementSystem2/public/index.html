@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Data Management System</title>
+    <!-- Link Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Link Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Link Custom CSS -->
+    <style>
+        /* Custom CSS Styles */
+        /* Base colors */
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #ff6b6b;
+            --accent-color: #6ab2e5;
+            --text-color: #333;
+            --bg-color: #151515;
+        }
+
+        /* Background and text color */
+        body {
+            background:linear-gradient(1000deg,#4fbab0,#9550b5,#b64782);;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header styles */
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            margin-bottom: 50px;
+        }
+
+        /* Form select style */
+        .form-select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* List items */
+        .list-disc li {
+            margin-bottom: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .list-disc li:hover {
+            transform: scale(1.05);
+        }
+
+        /* Animation */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translate3d(0, -100%, 0);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            animation-name: fadeInDown;
+        }
+
+        #addCaseForm, #addPersonForm {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="date"], select {
+            /* width: 100%; */
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box; /* Ensures padding does not affect overall width */
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+    <div class="container animated">
+        <h1 class="text-4xl font-bold mb-8">Criminal Data Management System</h1>
+        <h2>Add New Case</h2>
+        <form id="addCaseForm">
+            <input type="text" id="caseNumber" placeholder="Case Number" required>
+            <input type="date" id="crimeDate" placeholder="Crime Date" required>
+            <input type="text" id="crimeLocation" placeholder="Crime Location" required>
+            <select id="status" required>
+                <option value="">Select Status</option>
+                <option value="Open">Open</option>
+                <option value="Closed">Closed</option>
+                <option value="Under Investigation">Under Investigation</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+            <button type="submit">Add Case</button>
+        </form>
+        <h2>Add New Person</h2>
+        <form id="addPersonForm">
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <input type="date" id="dob" placeholder="Date of Birth" required>
+            <input type="text" id="nationality" placeholder="Nationality" required>
+    
+            <div>
+                <label>Gender:</label>
+                <input type="radio" id="male" name="gender" value="M" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="F" required>
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="O" required>
+                <label for="other">Other</label>
+            </div>
+    
+            <button type="submit">Add Person</button>
+        </form>
+        <div class="mb-4">
+            <select id="crimeTypeSelect" class="form-select">
+                <option value="">Select Crime Type</option>
+            </select>
+            <div>
+                <a href="/officer-details" class="btn mr-4 animate__animated animate__bounce">Officer Details</a>
+                <a href="/case-and-evidence" class="btn animate__animated animate__bounce">Case and Evidence</a>
+            </div>
+        </div>
+        <ul id="criminalsList" class="list-disc pl-4"></ul>
+        <div id="criminalDetails" class="mt-8"></div>
+    </div>
+
+    <!-- Link Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Link Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
